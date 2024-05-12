@@ -4,6 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { AuthContext } from '@/providers/AuthProvider';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import toast from 'react-hot-toast';
 
 const Header = () => {
   const [clicked, setClicked] = useState(false);
@@ -11,7 +12,14 @@ const Header = () => {
 
   const logOutHandler = async () => {
     await logOut();
-    alert('logged out');
+    toast.success('logged out successfully', {
+      style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+        padding: '14px 20px',
+      },
+    });
   };
 
   return (

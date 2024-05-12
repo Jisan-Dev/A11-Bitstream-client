@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import toast from 'react-hot-toast';
 
 const schema = z.object({
   name: z.string().min(2).max(50).nonempty(),
@@ -27,9 +28,28 @@ const SignUp = () => {
   const { signInWithGoogle, createUser, updateUserProfile } = useContext(AuthContext);
 
   const googleSignIn = async () => {
-    const { user } = await signInWithGoogle();
-    console.log('result', user);
-    // alert('signedIn');
+    try {
+      const { user } = await signInWithGoogle();
+      console.log('result', user);
+      toast.success('logged in successfully', {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+          padding: '14px 20px',
+        },
+      });
+      navigate('/');
+    } catch (error) {
+      toast.error(error.code, {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+          padding: '14px 20px',
+        },
+      });
+    }
   };
 
   const {
@@ -44,10 +64,24 @@ const SignUp = () => {
       const { user } = await createUser(data.email, data.password);
       await updateUserProfile(data.name, data.photo);
       console.log('result', user);
-      // alert('signedIn');
+      toast.success('logged in successfully', {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+          padding: '14px 20px',
+        },
+      });
       navigate('/');
     } catch (error) {
-      console.log(error);
+      toast.error(error.code, {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+          padding: '14px 20px',
+        },
+      });
     }
     reset();
   };

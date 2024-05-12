@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { AuthContext } from '@/providers/AuthProvider';
 import { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
@@ -14,10 +15,28 @@ const Login = () => {
   const from = location.state || '/';
 
   const googleSignIn = async () => {
-    const { user } = await signInWithGoogle();
-    console.log('result', user);
-    // alert('signedIn');
-    navigate(from, { replace: true });
+    try {
+      const { user } = await signInWithGoogle();
+      console.log('result', user);
+      toast.success('logged in successfully', {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+          padding: '14px 20px',
+        },
+      });
+      navigate(from, { replace: true });
+    } catch (error) {
+      toast.error(error.code, {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+          padding: '14px 20px',
+        },
+      });
+    }
   };
 
   const submitHandler = async (e) => {
@@ -29,10 +48,24 @@ const Login = () => {
     try {
       const { user } = await signIn(userData.email, userData.password);
       console.log('result', user);
-      // alert('signedIn');
+      toast.success('logged in successfully', {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+          padding: '14px 20px',
+        },
+      });
       navigate(from);
     } catch (error) {
-      console.log(error);
+      toast.error(error.code, {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+          padding: '14px 20px',
+        },
+      });
     }
     form.reset();
   };
