@@ -3,9 +3,19 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { AuthContext } from '@/providers/AuthProvider';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
+  const { signInWithGoogle } = useContext(AuthContext);
+
+  const googleSignIn = async () => {
+    const { result } = await signInWithGoogle();
+    console.log(result);
+    alert('signedIn');
+  };
+
   return (
     <div>
       <div className="container mx-auto flex items-center justify-center font-gsans max-sm:px-3 pb-14 max-sm:py-5 max-sm:flex-col overflow-x-hidden ">
@@ -32,7 +42,7 @@ const Login = () => {
               <Button type="submit" className="w-full">
                 Login
               </Button>
-              <Button variant="outline" className="w-full">
+              <Button onClick={googleSignIn} variant="outline" className="w-full">
                 Login with Google
               </Button>
             </div>
