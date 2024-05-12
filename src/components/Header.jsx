@@ -1,6 +1,6 @@
 import { Button } from './ui/button';
 import logo from '../assets/logo.svg';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useState } from 'react';
 
 const Header = () => {
@@ -14,7 +14,9 @@ const Header = () => {
               <img src={logo} className="mr-3 h-9 sm:h-12" alt="Flowbite Logo" />
             </a>
             <div className="flex items-center lg:order-2">
-              <Button className="mr-2 max-sm:hidden">Log in</Button>
+              <Link to="/login">
+                <Button className="mr-2 max-sm:hidden">Log in</Button>
+              </Link>
               <Button variant="outline">Get started</Button>
               <button
                 onClick={() => setClicked(!clicked)}
@@ -93,9 +95,9 @@ const Header = () => {
                     Contact
                   </a>
                 </li>
-                <div className="px-2">
+                <Link to="/login" className="px-2">
                   <Button className="w-full sm:hidden">Log in</Button>
-                </div>
+                </Link>
               </ul>
             </div>
           </div>
