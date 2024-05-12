@@ -5,7 +5,7 @@ import { Button } from './ui/button';
 
 const Footer = () => {
   return (
-    <footer className="bg-primary/5 pt-10 ">
+    <footer className="bg-primary/10 pt-10 ">
       <div className="container px-6 py-8 mx-auto">
         <div className="flex flex-col items-center text-center">
           <NavLink to="/">
