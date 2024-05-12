@@ -1,10 +1,18 @@
 import { Button } from './ui/button';
 import logo from '../assets/logo.svg';
 import { Link, NavLink } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AuthContext } from '@/providers/AuthProvider';
 
 const Header = () => {
   const [clicked, setClicked] = useState(false);
+  const { user, logOut } = useContext(AuthContext);
+
+  const logOutHandler = async () => {
+    await logOut();
+    alert('logged out');
+  };
+
   return (
     <>
       <header className="container mx-auto">
@@ -14,12 +22,18 @@ const Header = () => {
               <img src={logo} className="mr-3 h-9 sm:h-12" alt="Flowbite Logo" />
             </a>
             <div className="flex items-center lg:order-2">
-              <Link to="/login">
-                <Button className="mr-2 max-sm:hidden">Log in</Button>
-              </Link>
-              <Link to="/sign-up">
-                <Button variant="outline">Get started</Button>
-              </Link>
+              {user ? (
+                <Button onClick={logOutHandler}>Logout</Button>
+              ) : (
+                <>
+                  <Link to="/login">
+                    <Button className="mr-2 max-sm:hidden">Log in</Button>
+                  </Link>
+                  <Link to="/sign-up">
+                    <Button variant="outline">Get started</Button>
+                  </Link>
+                </>
+              )}
               <button
                 onClick={() => setClicked(!clicked)}
                 type="button"
