@@ -5,11 +5,13 @@ import AddBlog from '@/pages/add-blog/AddBlog';
 import Login from '@/pages/authentications/Login';
 import SignUp from '@/pages/authentications/SignUp';
 import PrivateRoute from './PrivateRoute';
+import ErrorPage from './ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
