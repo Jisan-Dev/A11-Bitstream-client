@@ -8,12 +8,27 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
-  const { signInWithGoogle } = useContext(AuthContext);
+  const { signInWithGoogle, signIn } = useContext(AuthContext);
 
   const googleSignIn = async () => {
-    const { result } = await signInWithGoogle();
-    console.log(result);
-    alert('signedIn');
+    const { user } = await signInWithGoogle();
+    console.log('result', user);
+    // alert('signedIn');
+  };
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const userData = Object.fromEntries(formData.entries());
+    console.log(userData);
+    try {
+      const { user } = await signIn(userData.email, userData.password);
+      console.log('result', user);
+      // alert('signedIn');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -25,27 +40,29 @@ const Login = () => {
             <CardDescription>Enter your email below to login to your account</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-4">
-              <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" name="email" placeholder="m@example.com" required />
-              </div>
-              <div className="grid gap-2">
-                <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
-                  <Link href="#" className="ml-auto inline-block text-sm underline">
-                    Forgot your password?
-                  </Link>
+            <form onSubmit={submitHandler}>
+              <div className="grid gap-4">
+                <div className="grid gap-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input id="email" type="email" name="email" placeholder="m@example.com" required />
                 </div>
-                <Input id="password" type="password" name="password" required />
+                <div className="grid gap-2">
+                  <div className="flex items-center">
+                    <Label htmlFor="password">Password</Label>
+                    <Link href="#" className="ml-auto inline-block text-sm underline">
+                      Forgot your password?
+                    </Link>
+                  </div>
+                  <Input id="password" type="password" name="password" required />
+                </div>
+                <Button type="submit" className="w-full">
+                  Login
+                </Button>
+                <Button onClick={googleSignIn} variant="outline" className="w-full">
+                  Login with Google
+                </Button>
               </div>
-              <Button type="submit" className="w-full">
-                Login
-              </Button>
-              <Button onClick={googleSignIn} variant="outline" className="w-full">
-                Login with Google
-              </Button>
-            </div>
+            </form>
             <div className="mt-4 text-center text-sm">
               Don&apos;t have an account?{' '}
               <Link to="/sign-up" className="underline">
