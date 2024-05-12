@@ -4,12 +4,12 @@ const AddBlog = () => {
   return (
     <div>
       <div className="container mx-auto">
-        <div className="flex justify-center flex-row-reverse items-center min-h-[calc(100vh-360px)] my-10">
-          <section className="p-2 md:p-6 mx-auto bg-white rounded-md shadow-lg ">
+        <div className="flex justify-center items-center min-h-[calc(100vh-360px)] my-10 px-6">
+          <section className="p-2 md:p-6 w-full mx-auto bg-white rounded-md shadow-lg ">
             <h2 className="text-4xl mb-4 font-semibold text-gray-700 capitalize ">Post a Blog</h2>
 
             <form>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                   <div>
                     <label className="text-gray-700 font-medium" htmlFor="job_title">
@@ -19,7 +19,7 @@ const AddBlog = () => {
                       id="job_title"
                       name="job_title"
                       type="text"
-                      className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md  focus:border-slate-400 focus:ring-slate-300 focus:ring-opacity-40  focus:outline-none focus:ring"
+                      className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md  focus:border-slate-400 focus:ring-slate-300 focus:ring-opacity-40 focus:outline-none focus:ring"
                     />
                   </div>
 
