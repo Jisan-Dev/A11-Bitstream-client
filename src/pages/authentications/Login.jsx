@@ -5,15 +5,19 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { AuthContext } from '@/providers/AuthProvider';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const { signInWithGoogle, signIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state || '/';
 
   const googleSignIn = async () => {
     const { user } = await signInWithGoogle();
     console.log('result', user);
     // alert('signedIn');
+    navigate(from, { replace: true });
   };
 
   const submitHandler = async (e) => {
@@ -26,9 +30,11 @@ const Login = () => {
       const { user } = await signIn(userData.email, userData.password);
       console.log('result', user);
       // alert('signedIn');
+      navigate(from);
     } catch (error) {
       console.log(error);
     }
+    form.reset();
   };
 
   return (
@@ -58,11 +64,11 @@ const Login = () => {
                 <Button type="submit" className="w-full">
                   Login
                 </Button>
-                <Button onClick={googleSignIn} variant="outline" className="w-full">
-                  Login with Google
-                </Button>
               </div>
             </form>
+            <Button onClick={googleSignIn} variant="outline" className="w-full mt-4">
+              Login with Google
+            </Button>
             <div className="mt-4 text-center text-sm">
               Don&apos;t have an account?{' '}
               <Link to="/sign-up" className="underline">
