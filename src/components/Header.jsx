@@ -3,6 +3,7 @@ import logo from '../assets/logo.svg';
 import { Link, NavLink } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { AuthContext } from '@/providers/AuthProvider';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const Header = () => {
   const [clicked, setClicked] = useState(false);
@@ -23,7 +24,13 @@ const Header = () => {
             </a>
             <div className="flex items-center lg:order-2">
               {user ? (
-                <Button onClick={logOutHandler}>Logout</Button>
+                <>
+                  <Avatar className="mr-2">
+                    <AvatarImage src={user?.photoURL} referrerPolicy="no-referer" alt="@shadcn" />
+                    <AvatarFallback>DP</AvatarFallback>
+                  </Avatar>
+                  <Button onClick={logOutHandler}>Logout</Button>
+                </>
               ) : (
                 <>
                   <Link to="/login">
