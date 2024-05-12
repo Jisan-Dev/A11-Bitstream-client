@@ -17,7 +17,9 @@ const Header = () => {
               <Link to="/login">
                 <Button className="mr-2 max-sm:hidden">Log in</Button>
               </Link>
-              <Button variant="outline">Get started</Button>
+              <Link to="/sign-up">
+                <Button variant="outline">Get started</Button>
+              </Link>
               <button
                 onClick={() => setClicked(!clicked)}
                 type="button"
