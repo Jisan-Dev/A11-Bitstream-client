@@ -1,13 +1,8 @@
-// import { IoLocation } from 'react-icons/io5';
-// import { TbHomeCheck } from 'react-icons/tb';
-// import { Link } from 'react-router-dom';
-// import { MdDelete } from 'react-icons/md';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
 import { AuthContext } from '@/providers/AuthProvider';
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { FaRegBookmark } from 'react-icons/fa';
-// import { BeakerIcon } from '@heroicons/react/24/solid';
 
 import { Link } from 'react-router-dom';
 
@@ -102,7 +97,7 @@ const BlogCard = ({ blog, isDelete = false, deleteFunc, index }) => {
           <div className="flex justify-between items-center">
             <button className="group flex items-center bg-transparent p-2 text-sm font-medium text-gray-600 mt-4 -ml-2">
               <Link
-                // to={`/property-details/${id}`}
+                to={`/blog-details/${_id}`}
                 className="relative pr-4 text-gray-900 font-semibold after:transition-transform after:duration-500 after:ease-out after:absolute after:-bottom-1 after:-left-1 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-slate-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100 ">
                 Read details
               </Link>
