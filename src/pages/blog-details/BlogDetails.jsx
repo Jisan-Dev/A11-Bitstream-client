@@ -3,7 +3,7 @@ import useAxiosSecure from '@/hooks/useAxiosSecure';
 import { AuthContext } from '@/providers/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { IoIosSend } from 'react-icons/io';
 
 const BlogDetails = () => {
@@ -26,6 +26,7 @@ const BlogDetails = () => {
     const { data } = await axiosSecure(`/blogs/${id}`);
     return data;
   };
+  console.log('t', id);
 
   const getComments = async () => {
     const { data } = await axiosSecure(`/comments/${id}`);
@@ -70,7 +71,11 @@ const BlogDetails = () => {
         </div>
         <div className="lg:px-20">
           <p className="text-lg font-medium text-primary/80 my-4">{blog?.longDescription}</p>
-          {isSameAuthor && <Button>Update</Button>}
+          {isSameAuthor && (
+            <Link to={`/update-blog/${id}`}>
+              <Button>Update</Button>
+            </Link>
+          )}
 
           {/* comment section */}
 

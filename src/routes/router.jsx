@@ -7,6 +7,7 @@ import SignUp from '@/pages/authentications/SignUp';
 import PrivateRoute from './PrivateRoute';
 import ErrorPage from './ErrorPage';
 import BlogDetails from '@/pages/blog-details/BlogDetails';
+import UpdateBlog from '@/pages/update-blog/UpdateBlog';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <BlogDetails />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: '/update-blog/:id',
+        element: (
+          <PrivateRoute>
+            <UpdateBlog />
           </PrivateRoute>
         ),
       },
