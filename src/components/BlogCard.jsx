@@ -2,14 +2,56 @@
 // import { TbHomeCheck } from 'react-icons/tb';
 // import { Link } from 'react-router-dom';
 // import { MdDelete } from 'react-icons/md';
+import useAxiosSecure from '@/hooks/useAxiosSecure';
+import { AuthContext } from '@/providers/AuthProvider';
+import { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { FaRegBookmark } from 'react-icons/fa';
 // import { BeakerIcon } from '@heroicons/react/24/solid';
 
 import { Link } from 'react-router-dom';
 
 const BlogCard = ({ blog, isDelete = false, deleteFunc, index }) => {
-  const { blog_title, imageUrl, author, shortDescription, longDescription, category } = blog;
-  console.log(blog);
+  const { user } = useContext(AuthContext);
+  const { blog_title, imageUrl, author, shortDescription, longDescription, category, _id } = blog;
+  const axiosSecure = useAxiosSecure();
+
+  const handleBookmark = async (id) => {
+    const { data } = await axiosSecure.get(`/blogs/${id}`);
+    const { blog_title, imageUrl, author, shortDescription, longDescription, category, postedTime } = data;
+    const toSaveData = {
+      blog_title,
+      imageUrl,
+      author,
+      shortDescription,
+      longDescription,
+      category,
+      postedTime,
+      savedEmail: user?.email,
+    };
+    const { data: res } = await axiosSecure.post('/add-wishlist', toSaveData);
+    try {
+      if (res.insertedId) {
+        toast.success('Added to wishlist', {
+          style: {
+            borderRadius: '10px',
+            background: '#333',
+            color: '#fff',
+            padding: '14px 20px',
+          },
+        });
+      }
+    } catch (error) {
+      toast.error('Something went wrong', {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+          padding: '14px 20px',
+        },
+      });
+    }
+  };
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
       <div className="block rounded-lg p-4 shadow-md shadow-gray-300 ">
@@ -56,7 +98,7 @@ const BlogCard = ({ blog, isDelete = false, deleteFunc, index }) => {
             </button>
 
             <div>
-              <FaRegBookmark className="-mb-2 cursor-pointer" />
+              <FaRegBookmark onClick={() => handleBookmark(_id)} className="-mb-2 cursor-pointer" />
             </div>
 
             {/* {isDelete && (
