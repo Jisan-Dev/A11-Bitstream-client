@@ -5,7 +5,7 @@ const Hero = () => {
     <section className="flex items-center min-h-[calc(100vh-68px)] justify-center">
       <div className="mx-auto max-w-[63rem]">
         <div className="text-center">
-          <p className="text-base md:text-xl font-medium leading-8 text-lime-600/75">Blogging at the Forefront of Innovation</p>
+          <p className="text-base md:text-xl font-semibold leading-8 text-lime-600/75">Blogging at the Forefront of Innovation</p>
           <h1 className="mt-3 text-[3rem] sm:text-[4rem] xl:text-[5rem] font-semibold leading-[3rem] md:leading-[4.5rem] tracking-tight text-black">
             Bitsream: The Digital Frontier for Tech Thought Leaders
           </h1>
