@@ -1,6 +1,38 @@
 import { Button } from '@/components/ui/button';
+import { AuthContext } from '@/providers/AuthProvider';
+import axios from 'axios';
+import { useContext } from 'react';
+import Swal from 'sweetalert2';
 
 const AddBlog = () => {
+  const { user } = useContext(AuthContext);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const blogData = Object.fromEntries(formData.entries());
+    blogData.postedTime = new Date();
+    blogData.author = {
+      name: user?.displayName,
+      email: user?.email,
+    };
+    try {
+      const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/add-blog`, blogData);
+      if (data.insertedId) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Blog posted successfully',
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Sorry something went wrong!',
+      });
+    }
+  };
   return (
     <div>
       <div className="container mx-auto">
@@ -8,7 +40,7 @@ const AddBlog = () => {
           <section className="p-2 md:p-6 w-full mx-auto bg-white rounded-md shadow-lg ">
             <h2 className="text-4xl mb-4 font-semibold text-gray-700 capitalize ">Post a Blog</h2>
 
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                   <div>
@@ -29,7 +61,7 @@ const AddBlog = () => {
                     </label>
                     <input
                       id="imageUrl"
-                      type="imageUrl"
+                      type="url"
                       name="imageUrl"
                       // disabled
                       // defaultValue={user?.email}
