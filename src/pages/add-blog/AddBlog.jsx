@@ -32,6 +32,7 @@ const AddBlog = () => {
         title: 'Sorry something went wrong!',
       });
     }
+    form.reset();
   };
   return (
     <div>
@@ -48,9 +49,10 @@ const AddBlog = () => {
                       Post Title
                     </label>
                     <input
-                      id="job_title"
-                      name="job_title"
+                      id="blog_title"
+                      name="blog_title"
                       type="text"
+                      required
                       className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md  focus:border-slate-400 focus:ring-slate-300 focus:ring-opacity-40 focus:outline-none focus:ring"
                     />
                   </div>
@@ -63,6 +65,7 @@ const AddBlog = () => {
                       id="imageUrl"
                       type="url"
                       name="imageUrl"
+                      required
                       // disabled
                       // defaultValue={user?.email}
                       className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md  focus:border-slate-400 focus:ring-slate-300 focus:ring-opacity-40  focus:outline-none focus:ring"
@@ -74,7 +77,8 @@ const AddBlog = () => {
                     </label>
                     <textarea
                       maxLength={130}
-                      className="block w-full h-24 px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md  focus:border-slate-400 focus:ring-slate-300 focus:ring-opacity-40  focus:outline-none focus:ring"
+                      required
+                      className="block w-full h-24 px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:border-slate-400 focus:ring-slate-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                       name="shortDescription"
                       id="shortDescription"></textarea>
                   </div>
@@ -83,7 +87,7 @@ const AddBlog = () => {
                     <label className="text-gray-700 font-medium" htmlFor="category">
                       Category
                     </label>
-                    <select name="category" id="category" className="border p-2 rounded-md">
+                    <select required name="category" id="category" className="border p-2 rounded-md">
                       <option value="Entrepreneurship">Entrepreneurship</option>
                       <option value="Web Development">Web Development</option>
                       <option value="AI/ML">AI/ML</option>
@@ -98,7 +102,8 @@ const AddBlog = () => {
                   <textarea
                     className="block h-[200px] w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md  focus:border-slate-400 focus:ring-slate-300 focus:ring-opacity-40 focus:outline-none focus:ring"
                     name="longDescription"
-                    id="longDescription"></textarea>
+                    id="longDescription"
+                    required></textarea>
                 </div>
               </div>
               <div className="flex justify-end mt-6">
