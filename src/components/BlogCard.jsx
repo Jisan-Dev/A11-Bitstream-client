@@ -17,6 +17,17 @@ const BlogCard = ({ blog, isDelete = false, deleteFunc, index }) => {
   const axiosSecure = useAxiosSecure();
 
   const handleBookmark = async (id) => {
+    if (!user) {
+      toast.error('Please login to bookmark', {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+          padding: '14px 20px',
+        },
+      });
+      return;
+    }
     const { data } = await axiosSecure.get(`/blogs/${id}`);
     const { blog_title, imageUrl, author, shortDescription, longDescription, category, postedTime } = data;
     const toSaveData = {
@@ -33,6 +44,15 @@ const BlogCard = ({ blog, isDelete = false, deleteFunc, index }) => {
     try {
       if (res.insertedId) {
         toast.success('Added to wishlist', {
+          style: {
+            borderRadius: '10px',
+            background: '#333',
+            color: '#fff',
+            padding: '14px 20px',
+          },
+        });
+      } else {
+        toast.error('Already added to wishlist', {
           style: {
             borderRadius: '10px',
             background: '#333',
