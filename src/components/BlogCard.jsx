@@ -6,7 +6,7 @@ import { FaRegBookmark } from 'react-icons/fa';
 
 import { Link } from 'react-router-dom';
 
-const BlogCard = ({ blog, isDelete = false, deleteFunc, index }) => {
+const BlogCard = ({ blog, wishlistBlogId = '' }) => {
   const { user } = useContext(AuthContext);
   const { blog_title, imageUrl, author, shortDescription, longDescription, category, _id } = blog;
   const axiosSecure = useAxiosSecure();
@@ -98,7 +98,7 @@ const BlogCard = ({ blog, isDelete = false, deleteFunc, index }) => {
           <div className="flex justify-between items-center">
             <button className="group flex items-center bg-transparent p-2 text-sm font-medium text-gray-600 mt-4 -ml-2">
               <Link
-                to={`/blog-details/${_id}`}
+                to={`/blog-details/${wishlistBlogId ?? _id}`}
                 className="relative pr-4 text-gray-900 font-semibold after:transition-transform after:duration-500 after:ease-out after:absolute after:-bottom-1 after:-left-1 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-slate-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100 ">
                 Read details
               </Link>

@@ -29,7 +29,7 @@ const Wishlist = () => {
       <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-sm:px-4">
         {blogs.map((blog) => (
           <div key={blog._id}>
-            <BlogCard blog={blog} />
+            <BlogCard blog={blog} wishlistBlogId={blog.mainBlogId} />
           </div>
         ))}
       </main>
