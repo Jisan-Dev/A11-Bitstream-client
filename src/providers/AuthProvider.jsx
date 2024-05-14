@@ -11,6 +11,7 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import { app } from '../firebase/firebase.config';
+import useAxiosSecure from '@/hooks/useAxiosSecure';
 // import axios from 'axios';
 
 export const AuthContext = createContext(null);
@@ -20,6 +21,7 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const axiosSecure = useAxiosSecure();
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -56,11 +58,13 @@ const AuthProvider = ({ children }) => {
         console.log('CurrentUser-->', currentUser);
         setLoading(false);
         // axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email: currentUser?.email }, { withCredentials: true }).then((res) => console.log(res.data));
+        axiosSecure.post('/jwt', { email: user?.email }).then((res) => console.log(res.data));
       } else {
         setUser(null);
         console.log('CurrentUser-->', currentUser);
         setLoading(false);
         // axios.post(`${import.meta.env.VITE_API_URL}/logout`, {}, { withCredentials: true }).then((res) => console.log(res.data));
+        axiosSecure.post('/logout').then((res) => console.log(res.data));
       }
     });
     return () => {
