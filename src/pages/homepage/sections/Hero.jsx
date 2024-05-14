@@ -11,7 +11,7 @@ const Hero = () => {
               variants={{ hidden: { opacity: 0, y: -75 }, visible: { opacity: 1, y: 0 } }}
               initial="hidden"
               animate="visible"
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
               className="text-base md:text-xl font-semibold leading-8 text-lime-600/75">
               Blogging at the Forefront of Innovation
             </motion.p>
@@ -21,7 +21,7 @@ const Hero = () => {
                   variants={{ hidden: { opacity: 0, y: 75 }, visible: { opacity: 1, y: 0 } }}
                   initial="hidden"
                   animate="visible"
-                  transition={{ duration: 0.6, delay: 0.3 }}
+                  transition={{ duration: 0.7, delay: 0.1 }}
                   className="mt-3 text-[3rem] sm:text-[4rem] xl:text-[5rem] font-semibold leading-[3rem] md:leading-[4.5rem] tracking-tight text-black">
                   {item}
                 </motion.h1>

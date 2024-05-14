@@ -5,6 +5,25 @@ import { useQuery } from '@tanstack/react-query';
 import { useReactTable, getCoreRowModel, flexRender } from '@tanstack/react-table';
 import { useEffect, useMemo, useState } from 'react';
 
+const columns = [
+  {
+    header: 'SL',
+    accessorKey: 'blogSl',
+  },
+  {
+    header: 'Title',
+    accessorKey: 'blog_title',
+  },
+  {
+    header: 'Author',
+    accessorKey: 'author.name',
+  },
+  {
+    header: 'Author Img',
+    accessorKey: 'author.imageUrl',
+  },
+];
+
 const FeaturedBlogs = () => {
   const axiosSecure = useAxiosSecure();
 
@@ -13,10 +32,6 @@ const FeaturedBlogs = () => {
     queryKey: ['featured'],
   });
 
-  // useEffect(() => {
-  //
-  //   getData();
-  // }, [axiosSecure]);
   const getData = async () => {
     try {
       const { data } = await axiosSecure(`/featured`);
@@ -27,25 +42,6 @@ const FeaturedBlogs = () => {
   };
 
   console.log('first', blogs);
-
-  const columns = [
-    {
-      header: 'SL',
-      accessorKey: 'blogSl',
-    },
-    {
-      header: 'Title',
-      accessorKey: 'blog_title',
-    },
-    {
-      header: 'Author',
-      accessorKey: 'author.name',
-    },
-    {
-      header: 'Author Img',
-      accessorKey: 'author.imageUrl',
-    },
-  ];
 
   const table = useReactTable(blogs, columns);
 
