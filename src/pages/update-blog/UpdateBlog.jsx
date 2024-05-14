@@ -18,7 +18,7 @@ const UpdateBlog = () => {
   console.log('first', blog, id);
 
   const getData = async () => {
-    const { data } = await axiosSecure(`/blogs/${id}`);
+    const { data } = await axiosSecure(`/blogs/${id}?email=${user?.email}`);
     return data;
   };
 
