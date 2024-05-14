@@ -27,6 +27,7 @@ const UpdateBlog = () => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     console.log(data);
+    data.wordCount = data.longDescription.split(' ').length;
     // const { blog_title, imageUrl, author, shortDescription, longDescription, category } = data;
     // const toSaveData = {
     //   blog_title,

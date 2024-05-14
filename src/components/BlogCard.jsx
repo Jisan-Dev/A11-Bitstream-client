@@ -6,7 +6,7 @@ import { FaRegBookmark } from 'react-icons/fa';
 
 import { Link } from 'react-router-dom';
 
-const BlogCard = ({ blog, wishlistBlogId = '' }) => {
+const BlogCard = ({ blog, wishlistBlogId }) => {
   const { user } = useContext(AuthContext);
   const { blog_title, imageUrl, author, shortDescription, longDescription, category, _id } = blog;
   const axiosSecure = useAxiosSecure();

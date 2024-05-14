@@ -7,7 +7,7 @@ const Testimonial = () => {
             <div className="max-w-2xl mx-auto my-8 space-y-4 text-center xl:col-span-2 xl:text-left">
               <h2 className="text-5xl font-bold text-primary">What everyone is saying about the platform</h2>
               <p className="text-lg font-medium text-neutral-500">
-                Resounding endorsements that capture the essence of our platform's success and user satisfaction. Hear from delighted users across the globe.
+                Resounding endorsements that capture the essence of our platforms success and user satisfaction. Hear from delighted users across the globe.
               </p>
             </div>
             <div className="p-6 xl:col-span-3">
@@ -16,7 +16,7 @@ const Testimonial = () => {
                   <div className="p-6 rounded shadow-lg bg-primary text-white">
                     <p>
                       Bitsream is a true oasis for tech enthusiasts like myself. Its vibrant community fosters insightful discussions and collaboration, enabling me to continually
-                      expand my knowledge. The platform's user-friendly interface and wealth of resources have been instrumental in honing my skills and staying ahead of emerging
+                      expand my knowledge. The platforms user-friendly interface and wealth of resources have been instrumental in honing my skills and staying ahead of emerging
                       trends.
                     </p>
                     <div className="flex items-center mt-4 space-x-4">
@@ -46,7 +46,7 @@ const Testimonial = () => {
                   <div className="p-6 rounded shadow-lg bg-primary text-white">
                     <p>
                       Bitsream is a true oasis for tech enthusiasts like myself. Its vibrant community fosters insightful discussions and collaboration, enabling me to continually
-                      expand my knowledge. The platform's user-friendly interface and wealth of resources have been instrumental in honing my skills and staying ahead of emerging
+                      expand my knowledge. The platforms user-friendly interface and wealth of resources have been instrumental in honing my skills and staying ahead of emerging
                       trends. Bitsream is where innovation thrives
                     </p>
                     <div className="flex items-center mt-4 space-x-4">
@@ -60,7 +60,7 @@ const Testimonial = () => {
                   <div className="p-6 rounded shadow-lg bg-primary text-white">
                     <p>
                       Bitsream is a true oasis for tech enthusiasts like myself. Its vibrant community fosters insightful discussions and collaboration, enabling me to continually
-                      expand my knowledge. The platform's user-friendly interface and wealth of resources have been instrumental in honing my skills and staying ahead of emerging
+                      expand my knowledge. The platforms user-friendly interface and wealth of resources have been instrumental in honing my skills and staying ahead of emerging
                       trends. Bitsream is where innovation thrives
                     </p>
                     <div className="flex items-center mt-4 space-x-4">

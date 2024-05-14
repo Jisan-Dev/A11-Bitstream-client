@@ -10,6 +10,7 @@ import BlogDetails from '@/pages/blog-details/BlogDetails';
 import UpdateBlog from '@/pages/update-blog/UpdateBlog';
 import AllBlogs from '@/pages/all-blogs/AllBlogs';
 import Wishlist from '@/pages/wishlist/Wishlist';
+import FeaturedBlogs from '@/pages/featured-blogs/FeaturedBlogs';
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: '/all-blogs',
         element: <AllBlogs />,
+      },
+      {
+        path: '/featured-blogs',
+        element: <FeaturedBlogs />,
       },
     ],
   },

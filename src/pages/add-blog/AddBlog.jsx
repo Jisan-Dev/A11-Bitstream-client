@@ -15,6 +15,7 @@ const AddBlog = () => {
     const formData = new FormData(form);
     const blogData = Object.fromEntries(formData.entries());
     blogData.postedTime = new Date();
+    blogData.wordCount = blogData.longDescription.split(' ').length;
     blogData.author = {
       name: user?.displayName,
       email: user?.email,
