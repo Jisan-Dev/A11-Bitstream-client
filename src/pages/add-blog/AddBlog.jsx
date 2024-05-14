@@ -1,5 +1,7 @@
 import { Button } from '@/components/ui/button';
+import useAxiosSecure from '@/hooks/useAxiosSecure';
 import { AuthContext } from '@/providers/AuthProvider';
+import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -9,16 +11,31 @@ const AddBlog = () => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
 
+  const axiosSecure = useAxiosSecure();
+
+  const { data: blogs = [] } = useQuery({
+    queryFn: () => getData(),
+    queryKey: ['blogs'],
+  });
+  console.log(blogs);
+
+  const getData = async () => {
+    const { data } = await axiosSecure(`/blogs`);
+    return data;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
     const blogData = Object.fromEntries(formData.entries());
     blogData.postedTime = new Date();
+    blogData.blogSl = blogs.length + 1;
     blogData.wordCount = blogData.longDescription.split(' ').length;
     blogData.author = {
       name: user?.displayName,
       email: user?.email,
+      imageUrl: user?.photoURL,
     };
     try {
       const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/add-blog`, blogData);

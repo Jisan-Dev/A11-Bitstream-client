@@ -3,6 +3,7 @@ import Hero from './sections/Hero';
 import RecentBlogs from './sections/RecentBlogs';
 import Testimonial from './sections/Testimonial';
 import BlogCard from '@/components/BlogCard';
+import Featured from './sections/Featured';
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <Hero />
       <RecentBlogs />
       <Testimonial />
+      <Featured />
       <Newsletter />
     </>
   );
