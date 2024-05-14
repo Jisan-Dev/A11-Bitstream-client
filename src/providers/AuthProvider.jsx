@@ -12,6 +12,7 @@ import {
 } from 'firebase/auth';
 import { app } from '../firebase/firebase.config';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
+import axios from 'axios';
 // import axios from 'axios';
 
 export const AuthContext = createContext(null);
@@ -57,14 +58,14 @@ const AuthProvider = ({ children }) => {
         setUser(currentUser);
         console.log('CurrentUser-->', currentUser);
         setLoading(false);
-        // axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email: currentUser?.email }, { withCredentials: true }).then((res) => console.log(res.data));
-        axiosSecure.post('/jwt', { email: user?.email }).then((res) => console.log(res.data));
+        axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email: currentUser?.email }, { withCredentials: true }).then((res) => console.log(res.data));
+        // axiosSecure.post('/jwt', { email: user?.email }).then((res) => console.log(res.data));
       } else {
         setUser(null);
         console.log('CurrentUser-->', currentUser);
         setLoading(false);
-        // axios.post(`${import.meta.env.VITE_API_URL}/logout`, {}, { withCredentials: true }).then((res) => console.log(res.data));
-        axiosSecure.post('/logout').then((res) => console.log(res.data));
+        axios.post(`${import.meta.env.VITE_API_URL}/logout`, {}, { withCredentials: true }).then((res) => console.log(res.data));
+        // axiosSecure.post('/logout').then((res) => console.log(res.data));
       }
     });
     return () => {
