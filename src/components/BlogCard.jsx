@@ -24,7 +24,7 @@ const BlogCard = ({ blog, isDelete = false, deleteFunc, index }) => {
       return;
     }
     const { data } = await axiosSecure.get(`/blogs/${id}`);
-    const { blog_title, imageUrl, author, shortDescription, longDescription, category, postedTime } = data;
+    const { blog_title, imageUrl, author, shortDescription, longDescription, category, postedTime, _id } = data;
     const toSaveData = {
       blog_title,
       imageUrl,
@@ -34,6 +34,7 @@ const BlogCard = ({ blog, isDelete = false, deleteFunc, index }) => {
       category,
       postedTime,
       savedEmail: user?.email,
+      mainBlogId: _id,
     };
     const { data: res } = await axiosSecure.post('/add-wishlist', toSaveData);
     try {
