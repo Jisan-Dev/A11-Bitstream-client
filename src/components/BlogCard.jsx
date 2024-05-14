@@ -68,7 +68,7 @@ const BlogCard = ({ blog, isDelete = false, deleteFunc, index }) => {
     }
   };
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div>
       <div className="block rounded-lg p-4 shadow-md shadow-gray-300 ">
         <img alt="" src={imageUrl} className="h-56 w-full rounded-md object-cover" />
 

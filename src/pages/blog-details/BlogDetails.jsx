@@ -56,6 +56,7 @@ const BlogDetails = () => {
     } catch (error) {
       console.log(error);
     }
+    form.reset();
   };
 
   return (
@@ -97,7 +98,7 @@ const BlogDetails = () => {
 
           {comments.map((comment) => {
             return (
-              <div key={comment._id} className="flex gap-2 mt-16 items-center ">
+              <div key={comment._id} className="flex gap-2 mt-4 items-center ">
                 <img src={comment.author.photo} className="w-10 h-10 rounded-full" alt="user image" />
                 <p className="text-lg font-medium text-primary/80 my-4">
                   <strong className="mr-2"> {comment.author.name} : </strong> {comment.comment}

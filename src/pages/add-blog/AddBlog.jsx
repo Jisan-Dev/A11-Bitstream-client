@@ -2,9 +2,11 @@ import { Button } from '@/components/ui/button';
 import { AuthContext } from '@/providers/AuthProvider';
 import axios from 'axios';
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const AddBlog = () => {
+  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
@@ -24,6 +26,7 @@ const AddBlog = () => {
           icon: 'success',
           title: 'Blog posted successfully',
         });
+        navigate('/all-blogs');
       }
     } catch (error) {
       console.log(error);

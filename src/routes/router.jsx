@@ -8,6 +8,7 @@ import PrivateRoute from './PrivateRoute';
 import ErrorPage from './ErrorPage';
 import BlogDetails from '@/pages/blog-details/BlogDetails';
 import UpdateBlog from '@/pages/update-blog/UpdateBlog';
+import AllBlogs from '@/pages/all-blogs/AllBlogs';
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: '/sign-up',
         element: <SignUp />,
+      },
+      {
+        path: '/all-blogs',
+        element: <AllBlogs />,
       },
     ],
   },
