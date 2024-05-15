@@ -8,7 +8,7 @@ import Featured from './sections/Featured';
 const Home = () => {
   return (
     <>
-      {/* <Hero /> */}
+      <Hero />
       <RecentBlogs />
       <Testimonial />
       <Featured />
