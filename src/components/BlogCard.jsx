@@ -69,17 +69,17 @@ const BlogCard = ({ blog, wishlistBlogId }) => {
     }
   };
   return (
-    <div>
-      <div className="block rounded-lg p-4 shadow-md shadow-gray-300 ">
+    <div className="h-full">
+      <div className="h-full flex flex-col rounded-lg p-4 shadow-md shadow-gray-300">
         <img alt="" src={imageUrl} className="h-56 w-full rounded-md object-cover" />
 
-        <div className="mt-2">
-          <dl>
-            <div className="flex items-center justify-end pt-1">
+        <div className="mt-2 flex flex-col justify-between h-full">
+          <dl className="grow">
+            <div className="flex items-center mb-4 mt-1 pt-1">
               <div>
                 <dt className="sr-only">Category</dt>
                 <dd>
-                  <span className="text-sm bg-primary rounded-md py-2 px-4 capitalize text-white font-medium">{category}</span>
+                  <span className="text-xs bg-transparent text-primary border border-primary rounded-md py-2 px-4 capitalize font-medium">{category}</span>
                 </dd>
               </div>
             </div>
@@ -91,7 +91,7 @@ const BlogCard = ({ blog, wishlistBlogId }) => {
 
             <div className="mt-1">
               <dt className="sr-only">Short description</dt>
-              <dd className="text-base font-medium text-primary/80">{shortDescription}</dd>
+              <dd className="text-base font-medium text-primary/80 flex-grow">{shortDescription}</dd>
             </div>
           </dl>
 

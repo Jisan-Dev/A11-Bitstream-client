@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -34,12 +35,16 @@ const Hero = () => {
         </div>
 
         <div className="mt-6 flex items-center justify-center gap-4">
-          <Button size="lg" className="text-base rounded-md px-5 py-3 font-medium transition-colors">
-            Get started for free
-          </Button>
-          <Button size="lg" variant="outline" className="text-base rounded-md px-5 py-3 font-medium transition-colors">
-            Explore Blogs
-          </Button>
+          <Link to={'/sign-up'}>
+            <Button size="lg" className="text-base rounded-md px-5 py-3 font-medium transition-colors">
+              Get started for free
+            </Button>
+          </Link>
+          <Link to={'all-blogs'}>
+            <Button size="lg" variant="outline" className="text-base rounded-md px-5 py-3 font-medium transition-colors">
+              Explore Blogs
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

@@ -4,9 +4,10 @@ import { AuthContext } from '@/providers/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const UpdateBlog = () => {
+  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
   const { id } = useParams();
@@ -47,6 +48,7 @@ const UpdateBlog = () => {
           padding: '14px 20px',
         },
       });
+      navigate(`/blog-details/${id}`);
     } else {
       toast.error('Something went wrong', {
         style: {

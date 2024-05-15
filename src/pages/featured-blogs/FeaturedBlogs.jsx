@@ -1,33 +1,40 @@
-import BlogCard from '@/components/BlogCard';
+import { TbArrowsSort } from 'react-icons/tb';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
-import { useReactTable, getCoreRowModel, flexRender } from '@tanstack/react-table';
-import { useEffect, useMemo, useState } from 'react';
+import { useReactTable, getCoreRowModel, flexRender, getSortedRowModel } from '@tanstack/react-table';
 
 const columns = [
-  {
-    header: 'SL',
-    accessorKey: 'blogSl',
-  },
+  // {
+  //   id: 'S.No',
+  //   header: 'S.No',
+  //   cell: (info) => <p>{info.row.index + 1}</p>,
+  // },
   {
     header: 'Title',
     accessorKey: 'blog_title',
+    cell: (props) => <p>{props.getValue()}</p>,
   },
   {
     header: 'Author',
-    accessorKey: 'author.name',
+    accessorKey: 'author',
+    cell: (props) => <p>{props.getValue()?.name}</p>,
   },
   {
     header: 'Author Img',
-    accessorKey: 'author.imageUrl',
+    accessorKey: 'author',
+    cell: (props) => (
+      <div className="h-12 w-12 rounded-full overflow-hidden">
+        <img src={props.getValue()?.imageUrl} alt="" />
+      </div>
+    ),
   },
 ];
 
 const FeaturedBlogs = () => {
   const axiosSecure = useAxiosSecure();
 
-  const { data: blogs = [] } = useQuery({
+  const { data = [] } = useQuery({
     queryFn: () => getData(),
     queryKey: ['featured'],
   });
@@ -41,11 +48,12 @@ const FeaturedBlogs = () => {
     }
   };
 
-  console.log('first', blogs);
+  console.log('first', data);
 
-  const table = useReactTable(blogs, columns);
+  const table = useReactTable({ data, columns, getCoreRowModel: getCoreRowModel(), getSortedRowModel: getSortedRowModel() });
+  console.log(table.getHeaderGroups());
 
-  if (!blogs.length) {
+  if (!data.length) {
     return <p>Loading...</p>; // Placeholder for loading state
   }
   return (
@@ -63,7 +71,8 @@ const FeaturedBlogs = () => {
           </div>
         ))}
       </main> */}
-      <Table className="w-full">
+
+      {/* <Table className="w-full">
         <TableHeader>
           <TableRow>
             {columns.map((column, i) => (
@@ -71,16 +80,31 @@ const FeaturedBlogs = () => {
             ))}
           </TableRow>
         </TableHeader>
-        <TableBody>
-          {table.rows.map((row, i) => (
-            <tr key={i}>
-              {row.cells.map((cell) => (
-                <td key={cell.id}>{flexRender(cell.value, cell)}</td>
+      </Table> */}
+
+      <div className="px-16">
+        <Table>
+          {table.getHeaderGroups().map((headerGroup) => (
+            <TableRow key={headerGroup.id}>
+              {headerGroup.headers.map((header) => (
+                <TableHead key={header.id}>
+                  {header.column.columnDef.header}
+                  {header.column.getCanSort() && <TbArrowsSort className="inline-flex ml-2 cursor-pointer" onClick={header.column.getToggleSortingHandler()} />}
+                </TableHead>
               ))}
-            </tr>
+            </TableRow>
           ))}
-        </TableBody>
-      </Table>
+          {/* <TableBody> */}
+          {table.getRowModel().rows.map((row) => (
+            <TableRow key={row.id}>
+              {row.getVisibleCells().map((cell) => (
+                <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
+              ))}
+            </TableRow>
+          ))}
+          {/* </TableBody> */}
+        </Table>
+      </div>
     </section>
   );
 };

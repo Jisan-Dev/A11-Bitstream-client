@@ -17,7 +17,7 @@ const Footer = () => {
           </p>
 
           <div className="flex flex-col mt-4 sm:flex-row items-center justify-center ">
-            <Link to="/#properties">
+            <Link to="all-blogs">
               <Button className="px-3">
                 <svg className="w-5 h-5 mx-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path

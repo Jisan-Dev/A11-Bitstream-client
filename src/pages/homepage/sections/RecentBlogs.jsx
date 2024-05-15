@@ -10,12 +10,12 @@ const RecentBlogs = () => {
 
   const { data: blogs = [] } = useQuery({
     queryFn: () => getData(),
-    queryKey: ['blogs'],
+    queryKey: ['recentBlogs'],
   });
   console.log(blogs);
 
   const getData = async () => {
-    const { data } = await axiosSecure(`/blogs`);
+    const { data } = await axiosSecure(`/recent-blogs`);
     return data;
   };
   return (
@@ -28,7 +28,7 @@ const RecentBlogs = () => {
       </header>
       <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-sm:px-4">
         {blogs.map((blog) => (
-          <div key={blog._id}>
+          <div className="h-full" key={blog._id}>
             <BlogCard blog={blog} />
           </div>
         ))}
