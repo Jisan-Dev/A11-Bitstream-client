@@ -17,9 +17,9 @@ const AllBlogs = () => {
     const getData = async () => {
       const { data } = await axiosSecure(`/all-blogs?filter=${filter}&search=${search}`);
       setBlogs(data);
+      setLoading(false);
     };
     getData();
-    setLoading(false);
   }, [filter, search]);
 
   const handleSearch = (e) => {
