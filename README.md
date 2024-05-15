@@ -1,8 +1,10 @@
-# React + Vite
+# Bitsream | Blogging at the Forefront of Innovation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bitsream is a cutting-edge tech blogging platform that empowers individuals to share their expertise, engage with a global community, and stay ahead of the curve in the ever-evolving digital landscape. With its innovative features and user-friendly interface, Bitsream offers a seamless and immersive experience for tech enthusiasts and industry professionals alike. Here are the key features that set Bitsream apart:
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Authentication with form and google account.
+- Responsive design.
+- Saving blogs as bookmarked.
+- Effortlessly create, publish, and manage blogs
+- Users can give their thoughts by commenting under blogs/
+- Robust Search and Filtering.
