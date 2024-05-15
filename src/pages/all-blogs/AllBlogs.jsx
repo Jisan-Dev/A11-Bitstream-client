@@ -1,4 +1,5 @@
 import BlogCard from '@/components/BlogCard';
+import CardSkeleton from '@/components/CardSkeleton';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
@@ -10,6 +11,7 @@ const AllBlogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [search, setSearch] = useState('');
   const [searchText, setSearchText] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getData = async () => {
@@ -17,6 +19,7 @@ const AllBlogs = () => {
       setBlogs(data);
     };
     getData();
+    setLoading(false);
   }, [filter, search]);
 
   const handleSearch = (e) => {
@@ -73,6 +76,7 @@ const AllBlogs = () => {
           </form>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-sm:px-4">
+          {loading && <CardSkeleton cards={9} />}
           {blogs.map((blog) => (
             <div key={blog._id}>
               <BlogCard blog={blog} />
