@@ -1,9 +1,11 @@
 import BlogCard from '@/components/BlogCard';
+import CardSkeleton from '@/components/CardSkeleton';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 
 const Featured = () => {
+  const [loading, setLoading] = useState(true);
   const axiosSecure = useAxiosSecure();
   const { data: blogs = [] } = useQuery({
     queryFn: () => getData(),
@@ -13,6 +15,7 @@ const Featured = () => {
   const getData = async () => {
     try {
       const { data } = await axiosSecure(`/featured`);
+      setLoading(false);
       return data;
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -27,6 +30,7 @@ const Featured = () => {
         </p>
       </header>
       <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-sm:px-4">
+        {loading && <CardSkeleton cards={6} />}
         {blogs.map((blog) => (
           <div key={blog._id}>
             <BlogCard blog={blog} />
