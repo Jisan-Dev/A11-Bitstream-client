@@ -26,7 +26,7 @@ const RecentBlogs = () => {
     <section className="container mx-auto max-sm:mt-0 mt-10">
       <header className="flex flex-col items-center justify-center space-y-1 mb-10 max-sm:mb-5">
         <h2 className="text-6xl max-sm:text-5xl font-semibold text-primary">Recent Blogs </h2>
-        <p className="text-xl max-sm:text-base font-medium text-primary/70 max-w-[640px] text-center">
+        <p className="text-xl max-sm:text-base max-sm:px-3 font-medium text-primary/70 max-w-[640px] text-center">
           Immerse Yourself in Our Freshest Stream of Cutting-Edge Tech Insights and Narratives
         </p>
       </header>

@@ -73,7 +73,7 @@ const Header = () => {
             <div
               className={` max-xl:absolute max-xl:top-14 ${
                 clicked ? 'max-xl:left-0' : 'max-xl:-left-full'
-              } max-xl:bg-white max-xl:border max-xl:py-4 max-xl:shadow-lg justify-between items-center w-full lg:flex lg:w-auto lg:order-1 transition-all duration-500`}>
+              } max-xl:bg-white max-xl:border max-xl:py-4 max-xl:shadow-lg justify-between items-center w-full lg:flex lg:w-auto lg:order-1 transition-all duration-500 z-50`}>
               <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                 <li>
                   <NavLink

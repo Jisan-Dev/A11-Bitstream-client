@@ -25,7 +25,7 @@ const Featured = () => {
     <section className="mb-20 container mx-auto">
       <header className="flex flex-col items-center justify-center space-y-4 mb-10 max-sm:mb-5">
         <h2 className="text-6xl max-sm:text-5xl font-semibold text-primary">Featured Blogs </h2>
-        <p className="text-xl max-sm:text-base font-medium text-primary/70 max-w-[600px] text-center">
+        <p className="text-xl max-sm:px-3 max-sm:text-base font-medium text-primary/70 max-w-[600px] text-center">
           Immerse Yourself in Our Freshest Stream of Cutting-Edge Tech Insights and Narratives
         </p>
       </header>

@@ -23,13 +23,13 @@ const Hero = () => {
                   initial="hidden"
                   animate="visible"
                   transition={{ duration: 0.7, delay: 0.1 }}
-                  className="mt-3 text-[3rem] sm:text-[4rem] xl:text-[5rem] font-semibold leading-[3rem] md:leading-[4.5rem] tracking-tight text-black">
+                  className="mt-3 text-[3.5rem] sm:text-[4rem] xl:text-[5rem] font-semibold leading-[3rem] md:leading-[4.5rem] tracking-tight text-black">
                   {item}
                 </motion.h1>
               </div>
             ))}
           </div>
-          <p className="mt-3 text-base md:text-xl font-medium leading-normal text-slate-400">
+          <p className="mt-3 max-sm:px-3 text-base md:text-xl font-medium leading-normal text-slate-400">
             Unleash your passion, share your expertise, and immerse yourself in a vibrant community of tech enthusiasts from around the world.
           </p>
         </div>

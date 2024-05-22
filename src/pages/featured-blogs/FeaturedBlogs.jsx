@@ -5,11 +5,11 @@ import { useQuery } from '@tanstack/react-query';
 import { useReactTable, getCoreRowModel, flexRender, getSortedRowModel } from '@tanstack/react-table';
 
 const columns = [
-  // {
-  //   id: 'S.No',
-  //   header: 'S.No',
-  //   cell: (info) => <p>{info.row.index + 1}</p>,
-  // },
+  {
+    id: 'S.No',
+    header: 'S.No',
+    cell: (info) => <p>{info.row.index + 1}</p>,
+  },
   {
     header: 'Title',
     accessorKey: 'blog_title',
@@ -58,36 +58,12 @@ const FeaturedBlogs = () => {
   }
   return (
     <section className="container mx-auto max-sm:mt-0 mt-10">
-      {/* <header className="flex flex-col items-center justify-center space-y-4 mb-10 max-sm:mb-5">
-        <h2 className="text-6xl max-sm:text-5xl font-semibold text-primary">Featured Blogs </h2>
-        <p className="text-xl max-sm:text-base font-medium text-primary/70 max-w-[600px] text-center">
-          Immerse Yourself in Our Freshest Stream of Cutting-Edge Tech Insights and Narratives
-        </p>
-      </header>
-      <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-sm:px-4">
-        {blogs.map((blog) => (
-          <div key={blog._id}>
-            <BlogCard blog={blog} />
-          </div>
-        ))}
-      </main> */}
-
-      {/* <Table className="w-full">
-        <TableHeader>
-          <TableRow>
-            {columns.map((column, i) => (
-              <TableHead key={i}>{column.header}</TableHead>
-            ))}
-          </TableRow>
-        </TableHeader>
-      </Table> */}
-
-      <div className="px-16">
-        <Table>
+      <div className="px-6 md:px-16">
+        <Table className="w-full">
           {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow key={headerGroup.id}>
-              {headerGroup.headers.map((header) => (
-                <TableHead key={header.id}>
+            <TableRow className="whitespace-nowrap" key={headerGroup.id}>
+              {headerGroup.headers.map((header, i) => (
+                <TableHead className={i === 1 && 'pr-40'} key={header.id}>
                   {header.column.columnDef.header}
                   {header.column.getCanSort() && <TbArrowsSort className="inline-flex ml-2 cursor-pointer" onClick={header.column.getToggleSortingHandler()} />}
                 </TableHead>
@@ -97,8 +73,10 @@ const FeaturedBlogs = () => {
           {/* <TableBody> */}
           {table.getRowModel().rows.map((row) => (
             <TableRow key={row.id}>
-              {row.getVisibleCells().map((cell) => (
-                <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
+              {row.getVisibleCells().map((cell, i) => (
+                <TableCell className={i === 3 && 'pl-10'} key={cell.id}>
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                </TableCell>
               ))}
             </TableRow>
           ))}
