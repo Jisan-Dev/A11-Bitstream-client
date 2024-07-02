@@ -11,3 +11,10 @@ Bitsream is a cutting-edge tech blogging platform that empowers individuals to s
 - Effortlessly create, publish, and manage blogs
 - Users can give their thoughts by commenting under blogs/
 - Robust Search and Filtering.
+
+
+### If you want to run this locally on your machine,
+- clone the repo in your machine
+- run "npm install" in terminal from the cloned directory to install all the dependencies.
+- you'll have to create your own firebase project to integrate firebase auth and their keys in firebase.config.
+- and then run "npm run dev" to start the project in your local server.
